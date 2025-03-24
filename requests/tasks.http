@@ -1,0 +1,172 @@
+### Happy Path 1
+POST http://localhost:8000/task
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("my-config")}}
+
+{
+  "title": "Task 1",
+  "description": "This is the first task",
+  "assignee": 1,
+  "status": 0,
+  "severity": 0,
+  "priority": 0,
+  "due_date": "2025-03-31"
+}
+
+> {%
+    client.global.set("task_1_id", response.body.id)
+%}
+
+### Happy Path 2
+POST http://localhost:8000/task
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("my-config")}}
+
+
+{
+  "title": "Task 2",
+  "description": "This is the second task",
+  "assignee": 2,
+  "status": 1,
+  "severity": 1,
+  "priority": 1,
+  "due_date": "2025-03-31"
+}
+
+### Happy Path 3
+POST http://localhost:8000/task
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("my-config")}}
+
+
+{
+  "title": "Task 3",
+  "description": "This is the third task",
+  "assignee": 3,
+  "status": 2,
+  "severity": 2,
+  "priority": 2,
+  "due_date": "2025-03-31"
+}
+
+### Invalid Assignee
+POST http://localhost:8000/task
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("my-config")}}
+
+
+{
+  "title": "Task 4",
+  "description": "This is the third task",
+  "assignee": 0,
+  "status": 2,
+  "severity": 2,
+  "priority": 2,
+  "due_date": "2025-03-31"
+}
+
+### Invalid Status
+POST http://localhost:8000/task
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("my-config")}}
+
+
+{
+  "title": "Task 5",
+  "description": "This is the third task",
+  "assignee": 0,
+  "status": 999,
+  "severity": 2,
+  "priority": 2,
+  "due_date": "2025-03-31"
+}
+
+### Invalid Severity
+POST http://localhost:8000/task
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("my-config")}}
+
+
+{
+  "title": "Task 6",
+  "description": "This is the third task",
+  "assignee": 0,
+  "status": 2,
+  "severity": 999,
+  "priority": 2,
+  "due_date": "2025-03-31"
+}
+
+### Invalid Priority
+POST http://localhost:8000/task
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("my-config")}}
+
+
+{
+  "title": "Task 7",
+  "description": "This is the third task",
+  "assignee": 0,
+  "status": 2,
+  "severity": 2,
+  "priority": 999,
+  "due_date": "2025-03-31"
+}
+
+### No Token
+
+POST http://localhost:8000/task
+Content-Type: application/json
+
+
+{
+  "title": "Task 8",
+  "description": "This is the first task",
+  "assignee": 1,
+  "status": 0,
+  "severity": 0,
+  "priority": 0,
+  "due_date": "2025-03-31"
+}
+
+
+### Update a task's title
+PUT http://localhost:8000/task/{{task_1_id}}
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("my-config")}}
+
+{
+  "title": "Title 1 Updated!"
+}
+
+### Invalid task id
+PUT http://localhost:8000/task/does-not-exist
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("my-config")}}
+
+{
+  "title": "Title 1 Updated!"
+}
+
+### Get all tasks
+GET http://localhost:8000/tasks
+Authorization: Bearer {{$auth.token("my-config")}}
+
+### Live interview
+POST http://localhost:8000/task/recommend-fields
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("my-config")}}
+
+{
+    "title": "temp title",
+    "description": "temp description"
+}
+
+### Live interview 2
+POST http://localhost:8000/task/suggest-new
+Content-Type: application/json
+Authorization: Bearer {{$auth.token("my-config")}}
+
+{
+
+}

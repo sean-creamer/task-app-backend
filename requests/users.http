@@ -1,0 +1,43 @@
+POST http://localhost:8000/signup
+Content-Type: application/json
+
+{
+  "username": "stacy",
+  "password": "helloworld1"
+}
+
+###
+POST http://localhost:8000/signup
+Content-Type: application/json
+
+{
+  "username": "becky",
+  "password": "helloworld2"
+}
+
+###
+POST http://localhost:8000/signup
+Content-Type: application/json
+
+{
+  "username": "keisha",
+  "password": "helloworld3"
+}
+
+###
+POST http://localhost:8000/signup
+Content-Type: application/json
+
+{
+  "username": "ashley",
+  "password": "helloworld4"
+}
+
+###
+POST http://localhost:8000/signup
+Content-Type: application/json
+
+{
+  "username": "dani",
+  "password": "helloworld5"
+}
